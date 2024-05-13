@@ -22,15 +22,27 @@ pipeline {
         //     }
             
         // }
-        stage("build & SonarQube analysis") {
-            agent any
-            steps {
-              withSonarQubeEnv('sonarqube') {
-                bat 'mvn clean package sonar:sonar'
-              }
-            }
-          }
-
+        // stage("build & SonarQube analysis") {
+        //     agent any
+        //     steps {
+        //       withSonarQubeEnv('sonarqube') {
+        //         bat 'mvn clean package sonar:sonar'
+        //       }
+        //     }
+        //   }
+    stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'SonarQubeScanner'
+    }
+    steps {
+        withSonarQubeEnv('sonarqube') {
+            bat "${scannerHome}/bin/sonar-scanner"
+        }
+        timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
+    }
+    }
        stage('tomcat deploy'){
            steps {
            deploy adapters: [tomcat9(credentialsId: 'tomcat_creds', path: '', url: 'http://localhost:8081/')], contextPath: null, war: 'target/*war'
