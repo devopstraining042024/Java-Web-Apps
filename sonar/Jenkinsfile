@@ -37,7 +37,7 @@ pipeline {
     steps {
         withSonarQubeEnv('sonarqube') {
             // bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test"
-            bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=squ_e08ef420df3dabea03b6548f35f55b9667ebfcd8"
+            bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test"
         }
         // timeout(time: 10, unit: 'MINUTES') {
         //     waitForQualityGate abortPipeline: true
