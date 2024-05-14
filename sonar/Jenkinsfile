@@ -21,25 +21,25 @@ pipeline {
         //         }
         //     }
             
-        // }
-        // stage("build & SonarQube analysis") {
-        //     agent any
-        //     steps {
-        //       withSonarQubeEnv('sonarqube') {
-        //         bat 'mvn clean package sonar:sonar'
-        //       }
-        //     }
-        //   }
-    stage('Sonarqube') {
-    environment {
-        scannerHome = tool 'SonarQubeScanner'
-    }
-    steps {
-        withSonarQubeEnv('sonarqube') {
-            // bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test"
-            bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test"
         }
-        // timeout(time: 10, unit: 'MINUTES') {
+        stage("build & SonarQube analysis") {
+            agent any
+            steps {
+              withSonarQubeEnv('sonarqube') {
+                bat 'mvn clean package sonar:sonar'
+              }
+            }
+          }
+    // stage('Sonarqube') {
+    // environment {
+    //     scannerHome = tool 'SonarQubeScanner'
+    // }
+    // steps {
+    //     withSonarQubeEnv('sonarqube') {
+    //         // bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test"
+    //         bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test"
+    //     }
+    //     // timeout(time: 10, unit: 'MINUTES') {
         //     waitForQualityGate abortPipeline: true
         // }
     }
