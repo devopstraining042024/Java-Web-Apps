@@ -23,7 +23,7 @@ pipeline {
             
         // }
         stage("build & SonarQube analysis") {
-            agent any
+            // agent any
             steps {
               withSonarQubeEnv('sonarqube') {
                 bat 'mvn clean package sonar:sonar'
@@ -43,7 +43,7 @@ pipeline {
     //         waitForQualityGate abortPipeline: true
     //     }
     // }
-    }
+    // }
        // stage('tomcat deploy'){
        //     steps {
        //     deploy adapters: [tomcat9(credentialsId: 'tomcat_creds', path: '', url: 'http://localhost:8081/')], contextPath: null, war: 'target/*war'
