@@ -40,9 +40,9 @@ pipeline {
     //         bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test"
     //     }
     //     // timeout(time: 10, unit: 'MINUTES') {
-        //     waitForQualityGate abortPipeline: true
-        // }
-    }
+    //         waitForQualityGate abortPipeline: true
+    //     }
+    // }
     }
        // stage('tomcat deploy'){
        //     steps {
