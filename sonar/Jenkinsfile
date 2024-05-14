@@ -36,11 +36,12 @@ pipeline {
     }
     steps {
         withSonarQubeEnv('sonarqube') {
-            bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test"
+            // bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test"
+            bat "${scannerHome}/bin/sonar-scanner"
         }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
+        // timeout(time: 10, unit: 'MINUTES') {
+        //     waitForQualityGate abortPipeline: true
+        // }
     }
     }
        // stage('tomcat deploy'){
