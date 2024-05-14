@@ -36,7 +36,7 @@ pipeline {
     }
     steps {
         withSonarQubeEnv('sonarqube') {
-            bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=mywebapp Maven Webapp"
+            bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test"
         }
         timeout(time: 10, unit: 'MINUTES') {
             waitForQualityGate abortPipeline: true
