@@ -7,7 +7,7 @@ pipeline {
     //     maven "mvn_home"
     // }
 
-    stages {
+   // stages {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
@@ -38,5 +38,5 @@ pipeline {
        //     }
        // }
         
-    }
+    //}
 }
